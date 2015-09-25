@@ -1,0 +1,6 @@
+
+New Methods
+1. PA + Truncate
+    For algorithm OFS, change lines 8, 9 and 12 
+2. PA + Projection + Truncate
+    For algorithm OFS, change lines 8 and 12 while keep line 9
