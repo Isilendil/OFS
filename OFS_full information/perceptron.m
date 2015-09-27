@@ -14,13 +14,6 @@ k = 2;
 
 w=zeros(size(X,2),1);     % initialize the weight vector
 %% loop
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-C = 1;
-lambda = 0.01;
-eta = 0.2;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 tic
 for t = 1:length(ID),
     id = ID(t);
@@ -33,20 +26,9 @@ for t = 1:length(ID),
     if y_t*f_t<=0,
         err_count=err_count+1;
     end 
-	  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %if y_t*f_t<=0,
-    if y_t*f_t<=1,
-         %w= w+y_t*x_t;
-				 
-				 l_t = 1 - y_t*f_t;
-				 tau = min(C, l_t/(x_t'*x_t));
-				 w = w + tau * y_t * x_t;
-				 
-        %w= w+eta*y_t*x_t;
-        w = w*min(1,1/(sqrt(lambda)*norm(w)));
-				%w(abs(w)<(1/size(w,1))) = 0;
+    if y_t*f_t<=0,
+         w= w+y_t*x_t;
         w=truncate(w,NumFeature);
-				 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         SV = [SV id];
     end
 

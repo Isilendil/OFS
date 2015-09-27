@@ -35,8 +35,15 @@ for t = 1:length(ID),
     end
 
     run_time = toc;
-    if (t==k)
-        k = 2*k;
+%     if (t==k)
+%         k = 2*k;
+%         mistakes = [mistakes err_count/t];
+%         mistakes_idx = [mistakes_idx t];
+%         SVs = [SVs length(SV)];
+%         TMs=[TMs run_time];
+%     end
+    
+    if (mod(t, 10) == 0)
         mistakes = [mistakes err_count/t];
         mistakes_idx = [mistakes_idx t];
         SVs = [SVs length(SV)];
